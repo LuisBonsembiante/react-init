@@ -20,8 +20,8 @@ class App extends Component {
                 <Router history={history}>
                     <div className="App">
                         <Switch>
-                            <Route path="/" component={Login} exact={true}/>
-                            <PrivateRoute path="/home" component={Home}/>
+                            <Route path="/" render={Login} exact={true}/>
+                            <PrivateRoute path="/home" inner={Home}/>
                         </Switch>
                     </div>
                 </Router>
