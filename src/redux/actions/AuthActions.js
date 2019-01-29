@@ -1,5 +1,6 @@
 import {EMAIL_CHANGED, LOGIN_USER, LOGIN_USER_SUCCESS, LOGOUT_USER, PASSWORD_CHANGED} from "./types";
 import history from '../../components/commons/history';
+import service from "../../components/services/services";
 
 export const emailChanged = (text) => {
 
@@ -22,7 +23,12 @@ export const passwordChanged = (text) => {
 export const loginUser = ({email, password}) => {
     return (dispatch) => {
         dispatch({type: LOGIN_USER});
-        loginUserSucces(dispatch, {})
+        service.http.get('https://jsonplaceholder.typicode.com/posts/1')
+            .then(({data}) => {
+                loginUserSucces(dispatch, {});
+                console.log('Received:', data);
+            });
+
 
     };
 };
@@ -43,7 +49,6 @@ const loginUserSucces = (dispatch, user) => {
     });
 
     history.push('/home');
-    //localStorage.setItem('user', JSON.stringify(user));
 };
 
 
