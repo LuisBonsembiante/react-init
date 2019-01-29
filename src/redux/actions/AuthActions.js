@@ -25,7 +25,7 @@ export const loginUser = ({email, password}) => {
         dispatch({type: LOGIN_USER});
         service.http.get('https://jsonplaceholder.typicode.com/posts/1')
             .then(({data}) => {
-                loginUserSucces(dispatch, {});
+                loginUserSucces(dispatch, data);
                 console.log('Received:', data);
             });
 
@@ -33,12 +33,14 @@ export const loginUser = ({email, password}) => {
     };
 };
 
-export const logoutUser = (dispatch, user) => {
+export const logoutUser = () => {
+    return (dispatch) => {
+        dispatch({
+            type: LOGOUT_USER
+        });
+        history.push('/');
+    }
 
-    dispatch({
-        type: LOGOUT_USER,
-        payload: user
-    });
 };
 
 const loginUserSucces = (dispatch, user) => {
