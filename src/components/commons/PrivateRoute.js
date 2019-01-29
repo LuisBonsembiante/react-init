@@ -7,6 +7,7 @@ class PrivateRoute extends Component {
     render() {
         const {user, location} = this.props;
         const PrivateComponent = this.props.inner; // A Component must start with a capital letter
+        console.log(user)
         return (
             <Route {...this.props} render={(props) => (
                 user
@@ -16,8 +17,6 @@ class PrivateRoute extends Component {
             />
         );
     }
-
-
 }
 
 
