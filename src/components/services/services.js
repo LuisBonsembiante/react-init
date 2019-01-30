@@ -4,6 +4,7 @@ import {Service} from 'axios-middleware';
 const service = new Service(axios);
 
 service.register({
+
     onRequest(config) {
         console.log('onRequest');
         config.headers = {
